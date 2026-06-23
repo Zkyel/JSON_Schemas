@@ -16,7 +16,7 @@
       "network_objects_list": {
         "type": "object",
         "patternProperties": {
-          ".*Networks*$": {
+          ".*Networks?$": {
             "oneOf": [
               {
                 "$ref": "#/definitions/ip_or_fqdn"
@@ -31,14 +31,13 @@
               }
             ]
           },
-          ".*Servers*$": {
+          ".*Servers?$": {
             "type": "array",
             "items": {
-              "type": "string",
-              "format": "ipv4"
+              "$ref": "#/definitions/ip_or_fqdn"
             }
           },
-          ".*Ports*$": {
+          ".*Ports?$": {
             "type": "array",
             "items": {
               "$ref": "#/definitions/service_value"
@@ -72,7 +71,7 @@
       "oneOf": [
         {
           "type": "string",
-          "pattern": "^(\\d{1,3}\\.){3}\\d{1,3}(\\s*\\/\\d{1,2})?$",
+          "pattern": "^(?:25[0-5]|2[0-4]\\d|1?\\d?\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1?\\d?\\d)){3}(?:\\/\\d{1,2})?$",
           "description": "IPv4 address or CIDR"
         },
         {
@@ -90,10 +89,12 @@
               "type": "string",
               "oneOf": [
                 {
-                  "pattern": "^(\\d{1,3}\\.){3}\\d{1,3}(\\s*\\/\\d{1,2})?$",
+                  "type": "string",
+                  "pattern": "^(?:25[0-5]|2[0-4]\\d|1?\\d?\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1?\\d?\\d)){3}(?:\\/\\d{1,2})?$",
                   "description": "IPv4 address or CIDR"
                 },
                 {
+                  "type": "string",
                   "pattern": "^(?=.{1,255}$)([a-zA-Z0-9]([-a-zA-Z0-9]*[a-zA-Z0-9])?\\.)+[a-zA-Z]{2,}$",
                   "description": "Fully Qualified Domain Name (FQDN)"
                 }
@@ -120,7 +121,7 @@
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^(\\d{1,3}\\.){3}\\d{1,3}(\\s*\\/\\d{1,2})?$"
+                    "pattern": "^(?:25[0-5]|2[0-4]\\d|1?\\d?\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1?\\d?\\d)){3}(?:\\/\\d{1,2})?$"
                   },
                   {
                     "type": "string",
@@ -171,10 +172,12 @@
               "type": "string",
               "oneOf": [
                 {
-                  "pattern": "^(\\d{1,3}\\.){3}\\d{1,3}(\\s*\\/\\d{1,2})?$",
+                  "type": "string",
+                  "pattern": "^(?:25[0-5]|2[0-4]\\d|1?\\d?\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1?\\d?\\d)){3}(?:\\/\\d{1,2})?$",
                   "description": "IPv4 address or CIDR"
                 },
                 {
+                  "type": "string",
                   "pattern": "^(?=.{1,255}$)([a-zA-Z0-9]([-a-zA-Z0-9]*[a-zA-Z0-9])?\\.)+[a-zA-Z]{2,}$",
                   "description": "Fully Qualified Domain Name (FQDN)"
                 }
@@ -205,7 +208,7 @@
                 "oneOf": [
                   {
                     "type": "string",
-                    "pattern": "^(\\d{1,3}\\.){3}\\d{1,3}(\\s*\\/\\d{1,2})?$"
+                    "pattern": "^(?:25[0-5]|2[0-4]\\d|1?\\d?\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1?\\d?\\d)){3}(?:\\/\\d{1,2})?$"
                   },
                   {
                     "type": "string",
